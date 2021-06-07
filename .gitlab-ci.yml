@@ -1,15 +1,23 @@
 image: gcc
 
-compile: 
+stagse: 
+  - build
+  - test
+
+compile:
+  stage: build 
   script:
     - echo "Building started"
     - mkdir build
     - g++ project.cpp -o build/run
     - echo "Building finished"
+  artifacts: 
+    paths:
+      - build/
 
 check_file_exist:
   stage: test
   script:
+    - echo "Test started"
     - ./build/run
-    - exists:
-      - "output.txt"
+    - test -f "output.txt"
