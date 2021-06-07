@@ -1,0 +1,8 @@
+image: gcc
+
+compile: 
+  script:
+    - echo "Building started"
+    - mkdir build
+    - g++ project.cpp -o build/run
+    - echo "Building finished"
