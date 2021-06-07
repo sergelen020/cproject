@@ -6,3 +6,10 @@ compile:
     - mkdir build
     - g++ project.cpp -o build/run
     - echo "Building finished"
+
+check_file_exist:
+  stage: test
+  script:
+    - ./build/run
+    - exists:
+      - "output.txt"
